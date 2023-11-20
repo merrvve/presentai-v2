@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding, signal } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'presentai';
+  darkMode = signal<boolean>(false);
+  @HostBinding('class.dark') get mode() { return this.darkMode(); }
+
 }
