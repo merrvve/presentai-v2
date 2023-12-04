@@ -1,6 +1,6 @@
 
 <div class="absolute top-0 right-0">
-  <button class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 m-2 hover:scale-105 focus:scale-100 duration-300 active:scale-110 cursor-pointer"
+  <button class="w-9 h-9 mt-6 m-4 border-2 border-pink-500 text-pink-500 dark:border-white dark:text-white inline-flex items-center justify-center rounded  hover:bg-pink-500 hover:text-white focus:scale-100 duration-300 active:scale-110 cursor-pointer"
           (click)="darkMode.set(!darkMode())">
     <span *ngIf="!darkMode()"><i class="fa-solid fa-moon"></i></span>
     <span *ngIf="darkMode()"><i class="fa-solid fa-sun"></i></span>
@@ -9,4 +9,5 @@
 
 
   <app-navbar></app-navbar>
-  <app-tools-list></app-tools-list>
+<app-extractpdf></app-extractpdf>
+<app-footer></app-footer>
