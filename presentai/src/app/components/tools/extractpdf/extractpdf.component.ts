@@ -40,4 +40,6 @@ export class ExtractpdfComponent {
       }
     }
   }
+
+  copyToClipboard() { }
 }

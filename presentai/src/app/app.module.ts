@@ -9,6 +9,8 @@ import { ToolsListComponent } from './components/tools/tools-list/tools-list.com
 import { HeroComponent } from './components/hero/hero.component';
 import { ExtractpdfComponent } from './components/tools/extractpdf/extractpdf.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { FeaturedComponent } from './components/featured/featured.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { FooterComponent } from './components/footer/footer.component';
     ToolsListComponent,
     HeroComponent,
     ExtractpdfComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    FeaturedComponent
   ],
   imports: [
     BrowserModule,
