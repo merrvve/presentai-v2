@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\presentai",
+    "\\presentai\\src",
+    "\\presentai\\src\\app",
+    "\\presentai\\src\\app\\components",
+    "\\presentai\\src\\app\\components\\home",
+    "\\presentai\\src\\app\\components\\tools",
+    "\\presentai\\src\\app\\components\\tools\\extractpdf",
+    "\\presentai\\src\\app\\components\\tools\\tools-list",
+    "\\presentai\\src\\app\\services"
+  ],
+  "SelectedNode": "\\presentai\\src\\app\\app-routing.module.ts",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +13,8 @@ import { ExtractpdfComponent } from './components/tools/extractpdf/extractpdf.co
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { FeaturedComponent } from './components/featured/featured.component';
+import { ReleaseComponent } from './components/release/release.component';
+
 
 @NgModule({
   declarations: [
@@ -22,11 +26,13 @@ import { FeaturedComponent } from './components/featured/featured.component';
     ExtractpdfComponent,
     FooterComponent,
     HomeComponent,
-    FeaturedComponent
+    FeaturedComponent,
+    ReleaseComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

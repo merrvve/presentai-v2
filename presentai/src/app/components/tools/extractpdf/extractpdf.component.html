@@ -1,21 +1,82 @@
 <section class="min-h-screen p-6 dark:bg-gray-800 dark:text-white ">
-  <div class="w-full mb-10 mt-2 font-bold text-lg">
+  <div class="w-full mb-4 mt-2 font-bold text-lg">
     PDF Text and Image Extraction Tool
+    <div class="mb-10 text-gray-400 text-sm">
+      <button class="hover:text-gray-600 mr-2" (click)="isLike = !isLike;">
+        <ng-container *ngIf="!isLike">
+          <i class="fa-regular fa-heart"></i> Like
+        </ng-container>
+        <ng-container *ngIf="isLike">
+          <i class="fa-solid fa-heart"></i> Unlike
+        </ng-container>
+      </button>
+      <!-- Wrapper div with relative positioning -->
+      <div class="relative inline-block">
+        <!-- Share Button -->
+        <button (click)="isShare = !isShare;" class="hover:text-gray-600 mr-2">
+          <i class="fa-solid fa-share-nodes"></i> Share
+        </button>
+
+        <!-- Share Menu -->
+        <div [hidden]="!isShare" class="absolute left-full -top-10 z-10 mt-1 ml-2 px-3 py-2 text-xs font-medium bg-white dark:bg-gray-700 text-black dark:text-white rounded-lg shadow-sm">
+          <div class="sharing-buttons">
+            <a class="w-full border-2 duration-200 ease inline-flex items-center mb-1 mr-1 transition p-1 rounded-lg text-white border-blue-600 bg-blue-600 hover:bg-blue-700 hover:border-blue-700" target="_blank" rel="noopener" href="https://facebook.com/sharer/sharer.php?u=extract.html" aria-label="Share on Facebook">
+              <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 mr-2">
+                <title>Facebook</title>
+                <path d="M379 22v75h-44c-36 0-42 17-42 41v54h84l-12 85h-72v217h-88V277h-72v-85h72v-62c0-72 45-112 109-112 31 0 58 3 65 4z">
+                </path>
+              </svg> Facebook
+            </a>
+            <a class="w-full border-2 duration-200 ease inline-flex items-center mb-1 mr-1 transition p-1 rounded-lg text-white border-gray-900 bg-gray-900 hover:bg-black hover:border-black" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=extract.html&amp;text=PDF%20Text%20and%20Imag%20Extraction%20Tool%20(Free)" aria-label="Share on Twitter">
+              <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 mr-2">
+                <title>Twitter</title>
+                <path d="m459 152 1 13c0 139-106 299-299 299-59 0-115-17-161-47a217 217 0 0 0 156-44c-47-1-85-31-98-72l19 1c10 0 19-1 28-3-48-10-84-52-84-103v-2c14 8 30 13 47 14A105 105 0 0 1 36 67c51 64 129 106 216 110-2-8-2-16-2-24a105 105 0 0 1 181-72c24-4 47-13 67-25-8 24-25 45-46 58 21-3 41-8 60-17-14 21-32 40-53 55z">
+                </path>
+              </svg> Twitter
+            </a>
+            
+            <a class="w-full border-2 duration-200 ease inline-flex items-center mb-1 mr-1 transition p-1 rounded-lg text-white border-green-600 bg-green-600 hover:bg-green-700 hover:border-green-700" target="_blank" rel="noopener" href="https://wa.me/?text=PDF%20Text%20and%20Imag%20Extraction%20Tool%20(Free)%20extract.html" aria-label="Share on Whatsapp" draggable="false">
+              <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 mr-2">
+                <title>Whatsapp</title>
+                <path d="M413 97A222 222 0 0 0 64 365L31 480l118-31a224 224 0 0 0 330-195c0-59-25-115-67-157zM256 439c-33 0-66-9-94-26l-7-4-70 18 19-68-4-7a185 185 0 0 1 287-229c34 36 56 82 55 131 1 102-84 185-186 185zm101-138c-5-3-33-17-38-18-5-2-9-3-12 2l-18 22c-3 4-6 4-12 2-32-17-54-30-75-66-6-10 5-10 16-31 2-4 1-7-1-10l-17-41c-4-10-9-9-12-9h-11c-4 0-9 1-15 7-5 5-19 19-19 46s20 54 23 57c2 4 39 60 94 84 36 15 49 17 67 14 11-2 33-14 37-27s5-24 4-26c-2-2-5-4-11-6z">
+                </path>
+              </svg> Whatsapp
+            </a>
+            <a class="w-full border-2 duration-200 ease inline-flex items-center mb-1 mr-1 transition p-1 rounded-lg text-white border-blue-600 bg-blue-600 hover:bg-blue-700 hover:border-blue-700" target="_blank" rel="noopener" href="https://telegram.me/share/url?text=PDF%20Text%20and%20Imag%20Extraction%20Tool%20(Free)&amp;url=extract.html" aria-label="Share on Telegram" draggable="false">
+              <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 mr-2">
+                <title>Telegram</title>
+                <path d="M256 8a248 248 0 1 0 0 496 248 248 0 0 0 0-496zm115 169c-4 39-20 134-28 178-4 19-10 25-17 25-14 2-25-9-39-18l-56-37c-24-17-8-25 6-40 3-4 67-61 68-67l-1-4-5-1q-4 1-105 70-15 10-27 9c-9 0-26-5-38-9-16-5-28-7-27-16q1-7 18-14l145-62c69-29 83-34 92-34 2 0 7 1 10 3l4 7a43 43 0 0 1 0 10z">
+                </path>
+              </svg> Telegram
+            </a>
+            <a class="w-full border-2 duration-200 ease inline-flex items-center mb-1 mr-1 transition p-1 rounded-lg text-white border-red-600 bg-red-600 hover:bg-red-700 hover:border-red-700" target="_blank" rel="noopener" href="mailto:?subject=PDF%20Text%20and%20Imag%20Extraction%20Tool%20(Free)&amp;body=extract.html" aria-label="Share by Email" draggable="false">
+              <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 mr-2">
+                <title>Email</title>
+                <path d="M464 64a48 48 0 0 1 29 86L275 314c-11 8-27 8-38 0L19 150a48 48 0 0 1 29-86h416zM218 339c22 17 54 17 76 0l218-163v208c0 35-29 64-64 64H64c-35 0-64-29-64-64V176l218 163z">
+                </path>
+              </svg> Email
+            </a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <!--<span class="m-2"><i class="fa-regular fa-comment"></i></span>-->
   </div>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <h2 class="mb-5 underline decoration-pink-500 underline-offset-8 decoration-dashed font-semibold">Input</h2>
-    <h2 class="mb-5 underline col-span-2 decoration-pink-500 underline-offset-8 decoration-dashed font-semibold">Output</h2>
 
     <div class=" w-full h-auto">
+      <h2 class="mb-5 underline decoration-pink-500 underline-offset-8 decoration-dashed font-semibold">Input</h2>
 
       <div class="file_upload p-2 relative border-4 border-dotted border-gray-300 rounded-lg ">
         <svg class="text-pink-500 w-24 mx-auto mt-10 mb-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
         <span class="input_field flex flex-col w-max mx-auto text-center">
-          <label>
-            <input type="file" #fileInput class="text-sm cursor-pointer w-36 hidden" accept="application/pdf" (change)="onFileSelected($event)" />
+          <!-- Hidden file input -->
+          <input type="file" #fileInput id="fileInput" class="hidden" accept="application/pdf" (change)="onFileSelected($event)" />
 
-
-            <span class="text bg-pink-600 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-pink-700" (click)="fileInput.click()">Select</span>
+          <!-- Label for the file input -->
+          <label for="fileInput" class="text bg-pink-600 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-pink-700">
+            Select
           </label>
 
           <span class="title text-pink-500 uppercase m-4">or drop files here</span>
@@ -23,14 +84,22 @@
       </div>
     </div>
     <div class=" h-auto col-span-2">
+      <h2 class="ml-5 mb-5 underline col-span-2 decoration-pink-500 underline-offset-8 decoration-dashed font-semibold">Output</h2>
+
       <!--<div [hidden]="isResult" class="p-2 border-4 border-dotted border-gray-300 rounded-lg w-full min-h-[50%] md:ml-5"></div>-->
       <div [hidden]="!isResult" class="h-full">
         <div class="relative">
-          <textarea class="p-2 border-4 border-dotted border-gray-300 rounded-lg w-full h-auto md:ml-5 bg-transparent dark:text-white" rows="20">
+          <textarea #textAreaText (change)="text=textAreaText.value" class="p-2 border-4 border-dotted border-gray-300 rounded-lg w-full h-auto md:ml-5 bg-transparent dark:text-white" rows="20">
 {{text}}
 </textarea>
-          <button (click)="copyToClipboard()" class="absolute top-1 right-1 text-sm bg-pink-500 hover:bg-pink-700 text-white font-bold py-1 px-2 rounded">
-            Copy
+          <button (click)="isCopied = !isCopied;" [cdkCopyToClipboard]="text"
+                  class="absolute top-1 right-1 text-sm bg-pink-500 hover:bg-pink-700 text-white font-bold py-1 px-2 rounded">
+            <ng-container *ngIf="!isCopied">
+              <i class="fa-solid fa-clipboard"></i> Copy
+            </ng-container>
+            <ng-container *ngIf="isCopied">
+              <i class="fa-solid fa-check"></i> Copied
+            </ng-container>
           </button>
         </div>
         <div [hidden]="pdfService.images.length<1">

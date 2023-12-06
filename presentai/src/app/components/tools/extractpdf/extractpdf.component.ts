@@ -9,6 +9,9 @@ import { PdfExtractionService } from '../../../services/pdf-extraction.service';
 export class ExtractpdfComponent {
   public text: string = "";
   public isResult: boolean = false;
+  public isCopied = false;
+  public isLike = false;
+  public isShare = false;
   constructor(public pdfService: PdfExtractionService) {
 
   }
@@ -41,5 +44,5 @@ export class ExtractpdfComponent {
     }
   }
 
-  copyToClipboard() { }
+  
 }
