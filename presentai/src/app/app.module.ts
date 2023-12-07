@@ -14,6 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { FeaturedComponent } from './components/featured/featured.component';
 import { ReleaseComponent } from './components/release/release.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ReleaseComponent } from './components/release/release.component';
     FooterComponent,
     HomeComponent,
     FeaturedComponent,
-    ReleaseComponent
+    ReleaseComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

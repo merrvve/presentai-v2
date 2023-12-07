@@ -1,11 +1,14 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-6 dark:bg-gray-700 dark:text-white" >
-<div class="col-span-2 ">
-<app-featured></app-featured>
-</div>
-<div>
-<app-tools-list></app-tools-list>
-</div>
-  <div>
+  <div class="md:col-span-2 duration-300" [ngClass]="show == true ? 'translate-y-0' : 'translate-y-8'">
+  <app-featured></app-featured>
+  </div>
+  <div class="w-full duration-300 delay-300" [ngClass]="show == true ? 'translate-y-0' : 'translate-y-8'">
+  <app-tools-list></app-tools-list>
+  </div>
+  <div class="w-full">
     <app-release></app-release>
+  </div>
+  <div class="md:col-span-2">
+    <app-contact></app-contact>
   </div>
 </div>

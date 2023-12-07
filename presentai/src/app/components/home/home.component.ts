@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
+  public show = false;
+  constructor() {
+    
+  }
+  ngAfterViewInit() {
+    this.show = true;
+  }
 }
