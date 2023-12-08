@@ -15,6 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FeaturedComponent } from './components/featured/featured.component';
 import { ReleaseComponent } from './components/release/release.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -29,12 +30,13 @@ import { ContactComponent } from './components/contact/contact.component';
     HomeComponent,
     FeaturedComponent,
     ReleaseComponent,
-    ContactComponent
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ClipboardModule
+    ClipboardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

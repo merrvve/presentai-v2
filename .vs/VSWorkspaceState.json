@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\backend",
     "\\presentai",
     "\\presentai\\src",
     "\\presentai\\src\\app",
     "\\presentai\\src\\app\\components",
-    "\\presentai\\src\\app\\components\\home",
-    "\\presentai\\src\\app\\components\\tools",
-    "\\presentai\\src\\app\\components\\tools\\extractpdf",
-    "\\presentai\\src\\app\\components\\tools\\tools-list",
-    "\\presentai\\src\\app\\services"
+    "\\presentai\\src\\app\\components\\contact",
+    "\\presentai\\src\\app\\components\\footer",
+    "\\presentai\\src\\app\\components\\release",
+    "\\presentai\\src\\assets"
   ],
-  "SelectedNode": "\\presentai\\src\\app\\app-routing.module.ts",
+  "SelectedNode": "\\backend\\pdfOperations.py",
   "PreviewInSolutionExplorer": false
 }
