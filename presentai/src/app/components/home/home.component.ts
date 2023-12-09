@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { iTool } from '../../models/iTool.interface';
+import { ToolsServiceService } from '../../services/tools-service.service';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +9,9 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   public show = false;
-  constructor() {
-    
+  public tools : iTool[] = []
+  constructor(private toolsService: ToolsServiceService) {
+    this.tools = this.toolsService.tools;
   }
   ngAfterViewInit() {
     this.show = true;

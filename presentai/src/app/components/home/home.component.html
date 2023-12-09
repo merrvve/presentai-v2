@@ -1,9 +1,9 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-6 dark:bg-gray-700 dark:text-white" >
   <div class="md:col-span-2 duration-300" [ngClass]="show == true ? 'translate-y-0' : 'translate-y-8'">
-  <app-featured></app-featured>
+  <app-featured [tools]="tools.slice(0,3)"></app-featured>
   </div>
   <div class="w-full duration-300 delay-300" [ngClass]="show == true ? 'translate-y-0' : 'translate-y-8'">
-  <app-tools-list></app-tools-list>
+  <app-tools-list [tools]="tools"></app-tools-list>
   </div>
   <div class="w-full">
     <app-release></app-release>

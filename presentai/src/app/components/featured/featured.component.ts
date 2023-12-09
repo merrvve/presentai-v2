@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { iTool } from '../../models/iTool.interface';
 
 @Component({
   selector: 'app-featured',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./featured.component.scss']
 })
 export class FeaturedComponent {
-
+  @Input() tools: iTool[] = [];
 }

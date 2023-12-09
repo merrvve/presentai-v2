@@ -16,6 +16,9 @@ import { FeaturedComponent } from './components/featured/featured.component';
 import { ReleaseComponent } from './components/release/release.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FormsModule } from '@angular/forms';
+import { LimitPipe } from './pipes/limit.pipe';
 
 
 @NgModule({
@@ -31,9 +34,12 @@ import { HttpClientModule } from '@angular/common/http';
     FeaturedComponent,
     ReleaseComponent,
     ContactComponent,
+    FilterPipe,
+    LimitPipe,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     ClipboardModule,
     HttpClientModule
