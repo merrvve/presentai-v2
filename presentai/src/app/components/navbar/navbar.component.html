@@ -3,7 +3,7 @@
 <nav class="text-gray-600 dark:text-slate-200 body-font bg-gray-100 dark:bg-gray-900 shadow-lg">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="assets/logo.png" class="w-10 h-10 rounded-lg" alt="Presentai Logo"/>
+      <img src="assets/logo-t.png" class="w-10 h-10 rounded-lg" alt="Presentai Logo"/>
       <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Presentai</span>
     </a>
     <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
@@ -43,13 +43,10 @@
     </div>
   </li>-->
         <li>
-          <a [routerLink]="[('/')]" class="block py-3 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-pink-700 md:p-0 dark:text-white md:dark:hover:text-pink-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
+          <a href="#about"   class="block py-3 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-pink-700 md:p-0 dark:text-white md:dark:hover:text-pink-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
         </li>
         <li>
-          <a [routerLink]="[('tools-list')]" class="block py-3 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-pink-700 md:p-0 dark:text-white md:dark:hover:text-pink-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Tools</a>
-        </li>
-        <li>
-          <a [routerLink]="[('/')]" class="block py-3 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-pink-700 md:p-0 dark:text-white md:dark:hover:text-pink-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+          <a href="#contact" class="block py-3 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-pink-700 md:p-0 dark:text-white md:dark:hover:text-pink-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
         </li>
         <li class="block  w-9 h-9 border-2 border-pink-500 text-pink-500 dark:border-white dark:text-white inline-flex items-center justify-center rounded  hover:bg-pink-500 hover:text-white focus:scale-100 duration-300 active:scale-110 cursor-pointer"
             (click)="toggleDarkMode()">

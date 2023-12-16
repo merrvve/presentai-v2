@@ -11,8 +11,8 @@ export class TextToPptxService {
   public httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(public http: HttpClient) { }
 
-  createSlides(text: string): Observable<any> {
-    return this.http.post(environment.apiUrl+'/api/create-slides', { text: text }, { headers: this.httpHeaders });
+  createSlides(text: string, tool: number): Observable<any> {
+    return this.http.post(environment.apiUrl + '/api/create-slides', { text: text, tool: tool }, { headers: this.httpHeaders, responseType: 'blob' as 'json' });
   }
 
   createSlidesWithGPT(text: string) {

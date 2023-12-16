@@ -1,0 +1,29 @@
+import pandas as pd
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+nltk.download('vader_lexicon')
+
+# Assuming you have a pandas DataFrame called 'df' with a column named 'review'
+sentiment_analyzer = SentimentIntensityAnalyzer()
+
+def get_sentiment_score(review):
+    return sentiment_analyzer.polarity_scores(review)
+
+df['sentiment_score'] = df[4].apply(get_sentiment_score)
+
+# Add a new column 'sentiment_category' with the sentiment category
+# Based on the sentiment_score
+sentiment_categories = {
+    'negative': {'compound': -1, 'neg': -1, 'neu': -0.5, 'pos': 0},
+    'positive': {'compound': 1, 'neg': 0, 'neu': 0.5, 'pos': 1},
+    'neutral': {'compound': 0, 'neg': 0, 'neu': 1, 'pos': 0}
+}
+
+def get_sentiment_category(sentiment_score):
+    for category, threshold in sentiment_categories.items():
+        if all(sentiment_score[key] >= threshold[key] for key in sentiment_score):
+            return category
+
+df['sentiment_category'] = df['sentiment_score'].apply(get_sentiment_category)

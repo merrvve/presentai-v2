@@ -11,15 +11,20 @@ Ref for slide types:
         8 ->  Pic with caption
 """
 
-from pptx import Presentation	
+from pptx import Presentation
+import json
+import os
 
-def create_pptx(slides,filename):
-    if not slides:
+def create_pptx(textInput,filename,isGPT):
+    if not textInput:
         return False
     if not filename:
         return False
     prs = Presentation()
-
+    if(isGPT==False):
+        slides = textInput.split('\n\n')
+    else:
+        slides = json.loads(textInput)
     slide1 = prs.slides.add_slide(prs.slide_layouts[0])
     title = slide1.shapes.title
     subtitle = slide1.placeholders[1]
@@ -27,10 +32,19 @@ def create_pptx(slides,filename):
     title.text = "Slides"
     subtitle.text = "Created by Presentai"
 
-    for slide in slides:        
+    for slide in slides:
         new_slide=prs.slides.add_slide(prs.slide_layouts[1])
-        new_slide.shapes.title.text=slide['title']
-        new_slide.placeholders[1].text=slide['content']
-
-    prs.save(filename)
+        #new_slide.shapes.title.text=slide['title']
+        tf=new_slide.shapes.placeholders[1].text_frame
+        if(isGPT==False):
+            items = slide.split('.')
+            for item in items:
+                tf.add_paragraph().text=item
+        else:
+            new_slide.shapes.title.text=slide['title']        
+            items = slide['content'].split('.')
+            for item in items:
+                tf.add_paragraph().text=item
+    filepath=os.path.join('userDocs',filename)     
+    prs.save(filepath)
     return True

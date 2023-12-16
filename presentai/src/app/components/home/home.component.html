@@ -1,14 +1,36 @@
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-6 dark:bg-gray-700 dark:text-white" >
-  <div class="md:col-span-2 duration-300" [ngClass]="show == true ? 'translate-y-0' : 'translate-y-8'">
-  <app-featured [tools]="tools.slice(0,3)"></app-featured>
-  </div>
-  <div class="w-full duration-300 delay-300" [ngClass]="show == true ? 'translate-y-0' : 'translate-y-8'">
-  <app-tools-list [tools]="tools"></app-tools-list>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-6 dark:bg-gray-700 dark:text-white duration-300">
+  <div class="md:col-span-2">
+    <!--[ngClass]="show == true ? 'translate-y-0' : 'translate-y-8'"-->
+    <app-featured [tools]="tools.slice(0,3)"></app-featured>
   </div>
   <div class="w-full">
+    <!--[ngClass]="show == true ? 'translate-y-0' : 'translate-y-8'"-->
+    <app-tools-list [tools]="tools"></app-tools-list>
+  </div>
+  <!--<div class="w-full">
     <app-release></app-release>
+  </div>-->
+  <div class="md:col-span-3">
+    <app-about></app-about>
   </div>
   <div class="md:col-span-2">
     <app-contact></app-contact>
+  </div>
+  <div>
+    <div id="contact" class="w-full m-2 mb-5 font-bold text-lg underline decoration-pink-500 decoration-dashed underline-offset-8">
+      Wishlist
+    </div>
+    <div class="flex flex-col p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800 shadow-sm shadow-pink-500 mb-5">
+
+      <label class="mb-8">I wish there was a tool that:</label>
+      <textarea class="bg-gray-100 mb-10 rounded dark:bg-gray-300" rows="7"></textarea>
+
+      <a [routerLink]="[('extract-pdf')]" class="w-1/3 p-2 rounded inline-flex items-center font-medium bg-pink-500 text-white hover:bg-pink-600 ">
+        Send
+        <svg class=" w-2.5 h-2.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+        </svg>
+      </a>
+    </div>
   </div>
 </div>

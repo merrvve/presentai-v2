@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { PdfExtractionService } from '../../../services/pdf-extraction.service';
 
 @Component({
@@ -6,14 +7,18 @@ import { PdfExtractionService } from '../../../services/pdf-extraction.service';
   templateUrl: './extractpdf.component.html',
   styleUrls: ['./extractpdf.component.scss']
 })
-export class ExtractpdfComponent {
+export class ExtractpdfComponent implements OnInit {
   public text: string = "";
   public isResult: boolean = false;
   public isCopied = false;
   public isLike = false;
   public isShare = false;
-  constructor(public pdfService: PdfExtractionService) {
+  constructor(public pdfService: PdfExtractionService, private title: Title) {
 
+  }
+
+  ngOnInit() {
+    this.title.setTitle("Presentai | Extract Text and Images From PDF Files")
   }
   onFileSelected(event: any): void {
     const file = event.target.files[0];

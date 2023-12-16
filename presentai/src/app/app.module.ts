@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { LimitPipe } from './pipes/limit.pipe';
+import { AboutComponent } from './components/about/about.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { LimitPipe } from './pipes/limit.pipe';
     ContactComponent,
     FilterPipe,
     LimitPipe,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

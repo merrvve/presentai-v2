@@ -6,9 +6,10 @@
   <ng-container *ngFor="let tool of tools">
     <div class="flex flex-col p-4 justify-between bg-white rounded-lg md:p-8 dark:bg-gray-800 shadow-sm shadow-pink-500 mb-5">
       <a [routerLink]="[tool.link]">
-        <img src="assets/tool-{{tool.id}}.png" class="rounded-lg mb-4" />
+        <img src="assets/tool-{{tool.id}}.png" class="rounded-lg mb-4 hover:scale-105 duration-300" />
+        <h2 class="mb-3 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white hover:text-pink-700 dark:hover:text-pink-700">{{tool.title}}</h2>
       </a>
-      <h2 class="mb-3 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">{{tool.title}}</h2>
+
       <p class="mb-3 text-gray-500 dark:text-gray-400 text-md">
         {{tool.description}}
       </p>

@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\backend",
     "\\presentai",
     "\\presentai\\src",
     "\\presentai\\src\\app",
     "\\presentai\\src\\app\\components",
-    "\\presentai\\src\\app\\components\\contact",
+    "\\presentai\\src\\app\\components\\about",
+    "\\presentai\\src\\app\\components\\featured",
     "\\presentai\\src\\app\\components\\footer",
-    "\\presentai\\src\\app\\components\\release",
-    "\\presentai\\src\\assets"
+    "\\presentai\\src\\app\\components\\navbar",
+    "\\presentai\\src\\app\\components\\release"
   ],
-  "SelectedNode": "\\backend\\pdfOperations.py",
+  "SelectedNode": "\\presentai\\src\\styles.scss",
   "PreviewInSolutionExplorer": false
 }
