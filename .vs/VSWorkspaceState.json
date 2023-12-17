@@ -5,12 +5,12 @@
     "\\presentai\\src",
     "\\presentai\\src\\app",
     "\\presentai\\src\\app\\components",
-    "\\presentai\\src\\app\\components\\about",
-    "\\presentai\\src\\app\\components\\featured",
-    "\\presentai\\src\\app\\components\\footer",
-    "\\presentai\\src\\app\\components\\navbar",
-    "\\presentai\\src\\app\\components\\release"
+    "\\presentai\\src\\app\\components\\tools",
+    "\\presentai\\src\\app\\components\\tools\\extractpdf",
+    "\\presentai\\src\\app\\components\\tools\\pubmed-abstracts",
+    "\\presentai\\src\\app\\models",
+    "\\presentai\\src\\app\\services"
   ],
-  "SelectedNode": "\\presentai\\src\\styles.scss",
+  "SelectedNode": "\\backend\\app.py",
   "PreviewInSolutionExplorer": false
 }

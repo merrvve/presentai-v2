@@ -20,6 +20,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { LimitPipe } from './pipes/limit.pipe';
 import { AboutComponent } from './components/about/about.component';
+import { PubmedAbstractsComponent } from './components/tools/pubmed-abstracts/pubmed-abstracts.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { AboutComponent } from './components/about/about.component';
     FilterPipe,
     LimitPipe,
     AboutComponent,
+    PubmedAbstractsComponent,
   ],
   imports: [
     BrowserModule,

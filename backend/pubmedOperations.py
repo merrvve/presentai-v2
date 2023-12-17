@@ -59,7 +59,7 @@ def createWordCloud(content,work_id):
 
 
 def searchPubmed(query,work_id):
-    result={'total-abstracts':0,'downloaded-abstracts':0, 'searchQuery':query,'id':work_id, 'dict':''}
+    result={'total-abstracts':0,'downloaded-abstracts':0, 'searchQuery':query,'work_id':work_id, 'dict':''}
     query=query.replace(' ','+')
 
     # common settings between esearch and efetch
@@ -77,7 +77,6 @@ def searchPubmed(query,work_id):
     total_abstract_count = int(re.findall("<Count>(\d+?)</Count>",search_data)[0])
     result['total-abstracts']=total_abstract_count
     if total_abstract_count < 1:
-        result['fetch_data']="not found"
         return result
     # obtain webenv and querykey settings for efetch command
     fetch_webenv = "&WebEnv=" + re.findall ("<WebEnv>(\S+)<\/WebEnv>", search_data)[0]
