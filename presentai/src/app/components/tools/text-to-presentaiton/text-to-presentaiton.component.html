@@ -164,9 +164,12 @@
         <label>Your Text:</label>
         <textarea class="w-full p-3 border-2 border-gray-200 rounded-lg mt-5 dark:bg-transparent dark:text-white" rows="6" #textInput></textarea>
         <!--<label>Split By:</label>
-    <input type="text" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mr-10" />
-    <label>Number of pieces in each slide:</label>
-    <input type="number" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mb-10" />-->
+  <input type="text" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mr-10" />
+  <label>Number of pieces in each slide:</label>
+  <input type="number" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mb-10" />-->
+
+        <span class="text-gray-500 text-sm mt-2">Input text will be split by 'two line-breaks' into new slides; <br /> and each slide's content will be split by '.' to new items.</span>
+        <button data-modal-target="progress-modal" data-modal-toggle="progress-modal" class="bg-pink-500 text-white rounded mt-2 p-3 float-right hover:bg-pink-600 " (click)="onSubmit(textInput.value)">Convert to .pptx</button>
         <!-- Main modal -->
         <div id="progress-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
           <div class="relative p-4 w-full max-w-md max-h-full">
@@ -179,23 +182,24 @@
                 <span class="sr-only">Close</span>
               </button>
               <div class="p-4 md:p-5">
-                <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">Status</h3>
-                <p class="text-gray-700 dark:text-gray-400 mb-6">
+                <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white mb-5">Status</h3>
+                <p class="text-gray-700 dark:text-gray-400 mb-5">
                   {{durum}}
                 <p>
-                  <div class="flex justify-center" [hidden]="isError">
-                    <button class="rounded-lg hover:bg-gray-100"><img src="assets/pptx_icon.png" class="w-20 h-20 hover:bg-gray-100" />Download File</button>
-                  </div>
+                  <ng-container *ngIf="!isError">
+                    <div class="flex justify-center">
+                      <a id="downloadLink" class="rounded-lg hover:bg-gray-100"><img src="assets/pptx_icon.png" class="w-20 h-20 hover:bg-gray-100" />Download File</a>
+                    </div>
+
+                  </ng-container>
                   <!-- Modal footer -->
-                  <div class="flex items-center mt-6 space-x-2 rtl:space-x-reverse">
-                    <button data-modal-hide="progress-modal" type="button" class="border dark:border-gray-200 dark:text-gray-200 text-gray-700 border-gray-700 rounded p-3 float-right hover:bg-gray-600">Close</button>
+                  <div class="flex mt-6 space-x-2 rtl:space-x-reverse">
+                    <button data-modal-hide="progress-modal" type="button" class="border text-pink-500 border-pink-500 rounded p-2 mb-2 hover:text-white hover:bg-pink-500 duration-300">Close</button>
                   </div>
               </div>
             </div>
           </div>
         </div>
-        <span class="text-gray-500 text-sm mt-2">Input text will be split by 'two line-breaks' into new slides; <br /> and each slide's content will be split by '.' to new items.</span>
-        <button data-modal-target="progress-modal" data-modal-toggle="progress-modal" class="bg-pink-500 text-white rounded mt-2 p-3 float-right hover:bg-pink-600 " (click)="onSubmit(textInput.value)">Convert to .pptx</button>
       </div>
 
 
@@ -203,62 +207,64 @@
       <div [hidden]="tool!=2">
         <p class="mt-2 mb-2">
           Please run this prompt, replacing the underlined text with your content:
-          </p>
-          <h5 class="font-semibold text-md mb-2">Prompt:</h5>
-          <p class="relative py-8 mb-2 border border-gray-300 rounded bg-gray-100 p-3 text-sm  dark:bg-transparent dark:text-white">
-            "You are a helpful assistant. Organise this text content into summarised slides for a coherent and engaging presentation. Your response should be in JSON object list for slides and each slide should be with properties 'title' and 'content'. The text is: <span class="underline">Your content here</span>"
-            
-            <button (click)="isCopied = !isCopied;" [cdkCopyToClipboard]="prompt"
-                    class="text-xs absolute top-1 right-1 text-sm bg-pink-500 hover:bg-pink-700 text-white font-bold py-1 px-2 rounded"> 
+        </p>
+        <h5 class="font-semibold text-md mb-2">Prompt:</h5>
+        <p class="relative py-8 mb-2 border border-gray-300 rounded bg-gray-100 p-3 text-sm  dark:bg-transparent dark:text-white">
+          "You are a helpful assistant. Organise this text content into summarised slides for a coherent and engaging presentation. Your response should be in JSON object list for slides and each slide should be with properties 'title' and 'content'. The text is: <span class="underline">Your content here</span>"
+
+          <button (click)="isCopied = !isCopied;" [cdkCopyToClipboard]="prompt"
+                  class="text-xs absolute top-1 right-1 text-sm bg-pink-500 hover:bg-pink-700 text-white font-bold py-1 px-2 rounded">
             <ng-container *ngIf="!isCopied"> Copy</ng-container>
             <ng-container *ngIf="isCopied"> Copied!</ng-container>
-</button>
+          </button>
+        </p>
+        <div class="text-gray-500 text-sm mt-2 mb-5">
+          <p class="mb-2">
+            If you split your content into smaller pieces and run this prompt, the output presentation will be more detailed.
           </p>
-          <div class="text-gray-500 text-sm mt-2 mb-5">
-            <p class="mb-2">
-              If you split your content into smaller pieces and run this prompt, the output presentation will be more detailed.
-            </p>
-            If your text is long and you don't want to do these steps multiple times, please try our third tool to automate the process.
-          </div>
+          If your text is long and you don't want to do these steps multiple times, please try our third tool to automate the process.
+        </div>
 
-          <label class="font-semibold text-md">Resulting json:</label>
-          <textarea class="w-full p-3 border-2 border-gray-200 rounded-lg mt-2  dark:bg-transparent dark:text-white" rows="6" #jsonInput placeholder="Copy and paste the resulting JSON here."></textarea>
-          <!--<label>Split By:</label>
-    <input type="text" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mr-10" />
-    <label>Number of pieces in each slide:</label>
-    <input type="number" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mb-10" />-->
-          <!-- Main modal -->
-          <div id="progress-modal2" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-md max-h-full">
-              <!-- Modal content -->
-              <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="progress-modal2">
-                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                  </svg>
-                  <span class="sr-only">Close</span>
-                </button>
-                <div class="p-4 md:p-5">
-                  <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">Status</h3>
-                  <p class="text-gray-700 dark:text-gray-400 mb-6">
-                    {{durum}}
-                  <p>
-                    <div class="flex justify-center" id="downloadLink">
-                      <button [hidden]="isError" class="rounded-lg hover:bg-gray-100"><img src="assets/pptx_icon.png" class="w-20 h-20 hover:bg-gray-100" />Download File</button>
-                    </div>
-                    <!-- Modal footer -->
-                    <div class="flex items-center mt-6 space-x-2 rtl:space-x-reverse">
-                      <button data-modal-hide="progress-modal2" type="button" class="border dark:border-gray-200 dark:text-gray-200 text-gray-700 border-gray-700 rounded p-3 float-right hover:bg-gray-600">Close</button>
-                    </div>
-                </div>
+        <label class="font-semibold text-md">Resulting json:</label>
+        <textarea class="w-full p-3 border-2 border-gray-200 rounded-lg mt-2  dark:bg-transparent dark:text-white" rows="6" #jsonInput placeholder="Copy and paste the resulting JSON here."></textarea>
+        <!--<label>Split By:</label>
+  <input type="text" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mr-10" />
+  <label>Number of pieces in each slide:</label>
+  <input type="number" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mb-10" />-->
+        <span class="text-gray-500 text-sm mt-2">
+          The JSON object list must be surrounded with square brackets.
+        </span>
+
+        <button data-modal-target="progress-modal2" data-modal-toggle="progress-modal2" class="bg-pink-500 text-white rounded mt-2 p-3 float-right hover:bg-pink-600 " (click)="onSubmit(jsonInput.value)">Convert to .pptx</button>
+
+        <!-- Main modal -->
+        <div id="progress-modal2" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+          <div class="relative p-4 w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="progress-modal2">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close</span>
+              </button>
+              <div class="p-4 md:p-5">
+                <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">Status</h3>
+                <p class="text-gray-700 dark:text-gray-400 mb-6">
+                  {{durum}}
+                <p>
+                  <div class="flex justify-center" id="downloadLink">
+                    <button [hidden]="isError" class="rounded-lg hover:bg-gray-100"><img src="assets/pptx_icon.png" class="w-20 h-20 hover:bg-gray-100" />Download File</button>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="flex items-center mt-6 space-x-2 rtl:space-x-reverse">
+                    <button data-modal-hide="progress-modal2" type="button" class="border dark:border-gray-200 dark:text-gray-200 text-gray-700 border-gray-700 rounded p-3 float-right hover:bg-gray-600">Close</button>
+                  </div>
               </div>
             </div>
           </div>
-          <span class="text-gray-500 text-sm mt-2">
-            The JSON object list must be surrounded with square brackets.
-          </span>
-          <button data-modal-target="progress-modal2" data-modal-toggle="progress-modal2" class="bg-pink-500 text-white rounded mt-2 p-3 float-right hover:bg-pink-600 " (click)="onSubmit(jsonInput.value)">Convert to .pptx</button>
         </div>
+      </div>
 
       </div>
   </div>

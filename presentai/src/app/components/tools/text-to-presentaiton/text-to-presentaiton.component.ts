@@ -25,6 +25,11 @@ export class TextToPresentaitonComponent implements OnInit {
   }
 
   onSubmit(text: string) {
+    if (text == '') {
+      this.isError = true;
+      this.durum = "Sorry, the text input is empty. Please provide text content.";
+      return;
+    }
     this.isError = false;
     this.isShow = true;
 
@@ -46,10 +51,11 @@ export class TextToPresentaitonComponent implements OnInit {
       this.durum = "Your file is successfully created. The download will be started automatically. You can also download by clicking this button: ";
 
       const url = window.URL.createObjectURL(response);
-      const link = document.createElement('a');
-      link.href = url;
+      //const link = document.createElement('a');
+      //link.href = url;
+      const link = document.getElementById('downloadLink') as HTMLAnchorElement
+      link.href = url
       link.setAttribute('download', 'presentation.pptx'); // replace 'file.extension' with your expected file name or extension
-      document.getElementById('downloadLink')?.appendChild(link);
       link.click();
     },
       error => {

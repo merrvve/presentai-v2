@@ -5,6 +5,11 @@ import pandas as pd
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 plt.switch_backend('agg')
+import io
+import base64
+import os
+
+
 
 def find_doi(row):
     for col in row[4:]:  # Adjusted to start from the 5th column (index 4) to the end
@@ -52,14 +57,23 @@ def createWordCloud(content,work_id):
     plt.imshow(wordcloud)
     plt.axis("off")
     plt.tight_layout(pad = 0)
-    plt.savefig(work_id+'.png')
-    plt.close()
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png')  # You can change the format as needed
+    buf.seek(0)
 
+    # Create a byte array from the BytesIO object
+    byte_array = buf.getvalue()
+    encoded_image = base64.b64encode(byte_array).decode('utf-8')
+    
+    # Don't forget to close the buffer
+    buf.close()
+    plt.close()
+    return encoded_image
 
 
 
 def searchPubmed(query,work_id):
-    result={'total-abstracts':0,'downloaded-abstracts':0, 'searchQuery':query,'work_id':work_id, 'dict':''}
+    result={'total_abstracts':0,'downloaded_abstracts':0, 'searchQuery':query,'work_id':work_id, 'dict':'', 'image':''}
     query=query.replace(' ','+')
 
     # common settings between esearch and efetch
@@ -75,7 +89,7 @@ def searchPubmed(query,work_id):
     f = urllib.request.urlopen(search_url)
     search_data = f.read().decode('utf-8')
     total_abstract_count = int(re.findall("<Count>(\d+?)</Count>",search_data)[0])
-    result['total-abstracts']=total_abstract_count
+    result['total_abstracts']=total_abstract_count
     if total_abstract_count < 1:
         return result
     # obtain webenv and querykey settings for efetch command
@@ -122,7 +136,7 @@ def searchPubmed(query,work_id):
     for abstract in abstracts:
         abstracts_list.append(abstract.split('\n\n'))
     abstracts_list.pop()
-    result['downloaded-abstracts']=len(abstracts)-1
+    result['downloaded_abstracts']=len(abstracts)-1
 
     df=pd.DataFrame(abstracts_list)
     df[0] = df[0].apply(remove_index)
@@ -136,9 +150,11 @@ def searchPubmed(query,work_id):
                 df.iloc[i,4]=df.iloc[i,3]
         else:
             df.iloc[i,4]=""
-    createWordCloud(df.iloc[:,4],work_id)
+    result['image']=createWordCloud(df.iloc[:,4],work_id)
     new_df = df[[0,1,2,3,4,'Link']].rename(columns={0: 'Journal', 1: 'Title', 2: 'Author', 3: 'Author Info', 4: 'Abstract'})
     dictdf=new_df.to_dict()
-    new_df.to_excel(work_id+'.xlsx',index=False)
+    filepath=os.path.join('userDocs',work_id+'.xlsx')     
+    
+    new_df.to_excel(filepath,index=False)
     result['dict']=dictdf
     return result

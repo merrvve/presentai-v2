@@ -15,7 +15,8 @@ export class PubmedAbstractsComponent {
       total_abstracts: 0,
       downloaded_abstracts: 0,
       work_id: '',
-      dict: ''
+      dict: '',
+      image: ''
   };
   constructor(private pubmedService: PubmedService) {
   }
@@ -28,6 +29,7 @@ export class PubmedAbstractsComponent {
         this.isLoading = false;
         this.isResult = true;
         this.result = result;
+        console.log(result)
       },
       error => {
         this.isError = true;
@@ -39,6 +41,18 @@ export class PubmedAbstractsComponent {
       window.alert('File not found.');
       return;
     }
-    this.pubmedService.downloadFile(this.result.work_id).subscribe();
+    this.pubmedService.downloadFile(this.result.work_id).subscribe((response: Blob) => {
+      
+      const url = window.URL.createObjectURL(response);
+      //const link = document.createElement('a');
+      //link.href = url;
+      const link = document.getElementById('downloadLink') as HTMLAnchorElement
+      link.href = url
+      link.setAttribute('download', 'abstracts.xlsx'); // replace 'file.extension' with your expected file name or extension
+      link.click();
+    },
+      error => {
+        window.alert(error)
+      });
   }
 }

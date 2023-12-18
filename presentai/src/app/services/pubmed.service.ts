@@ -15,6 +15,6 @@ export class PubmedService {
   }
 
   downloadFile(work_id: string): Observable<any> {
-    return this.http.post(environment.apiUrl + '/api/download-file', { work_id: work_id }, { headers: this.httpHeaders, responseType: 'blob' as 'json' });
+    return this.http.post(environment.apiUrl + '/api/download-file', {filename: work_id+'.xlsx' }, { headers: this.httpHeaders, responseType: 'blob' as 'json' });
   }
 }

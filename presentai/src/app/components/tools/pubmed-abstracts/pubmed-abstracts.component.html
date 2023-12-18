@@ -67,8 +67,8 @@
 
     <div class=" w-full h-auto flex flex-col mb-5">
       <h2 class="mb-5 underline decoration-pink-500 underline-offset-8 decoration-dashed font-semibold">Search Query:</h2>
-      <input type="text" class="border-2 border-gray-300 p-2 rounded bg-transparent w-full" placeholder="Ex: bortezomib resistance"/>
-      <button class="mt-2 bg-pink-500 text-white rounded p-2 hover:bg-pink-600" (click)="onSubmit()">Download Abstracts</button>
+      <input type="text" #textInput class="border-2 border-gray-300 p-2 rounded bg-transparent w-full" placeholder="Ex: bortezomib resistance"/>
+      <button class="mt-2 bg-pink-500 text-white rounded p-2 hover:bg-pink-600" (click)="onSubmit(textInput.value)">Download Abstracts</button>
       <div class="mt-2 text-xs text-gray-400">
         When you click on the button, this tool searches PubMed for your query, downloads the latest 50 published article abstracts from the results, and provides them in a structured Excel file.
         </div>
@@ -78,7 +78,7 @@
 
       <!--<div [hidden]="isResult" class="p-2 border-4 border-dotted border-gray-300 rounded-lg w-full min-h-[50%] md:ml-5"></div>-->
       <div class="h-full">
-        <ng-container *ngIf="isLoading">
+        <ng-container *ngIf="isLoading && !isError">
           <div class="flex flex-col items-center justify-center fa-3x text-pink-500">
             <i class="fas fa-spinner fa-pulse m-10"></i>
           </div>
@@ -107,11 +107,13 @@
               Your abstracts are ready as a table in this excel file. Please click on the button to download:
               <div class="flex">
                 <button class="m-2 p-4 rounded  text-pink-500 hover:bg-pink-500 hover:text-white" (click)="onDownload()"><i class="m-5 fa fa-file-excel fa-2xl"></i><br />Download .xlsx</button>
+                <a id="downloadLink"></a>
               </div>
             </div>
-            <!--<p class="mb-5">
+            <p class="mb-5">
         This word cloud is generated from the text content of the downloaded abstracts and represents the frequency of words:
-      </p>-->
+      </p>
+            <img src="data:image/png;base64, {{result.image}}" />
           </div>
         </ng-container>
 

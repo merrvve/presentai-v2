@@ -12,7 +12,7 @@ CORS(app)
 def hello_world():
     work_id=str(uuid.uuid4())
 
-    result=pubmedOperations.searchPubmed('vitamin b12 deficiency infants',work_id)
+    result=pubmedOperations.searchPubmed('mirna and vitamin d',work_id)
     
     return result
 
@@ -22,6 +22,11 @@ def serach_pubmed():
     work_id=str(uuid.uuid4())
     result=pubmedOperations.searchPubmed(message['query'],work_id)
     return result
+
+@app.route("/api/download-file", methods=['POST'])
+def download_file():
+    message = request.get_json()
+    return send_from_directory( 'userDocs',message['filename'], as_attachment=True), 200
         
 
 @app.route("/api/create-slides", methods=['POST', 'GET'])

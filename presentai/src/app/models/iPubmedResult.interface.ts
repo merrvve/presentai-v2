@@ -3,4 +3,5 @@ export interface iPubmedResult {
   downloaded_abstracts: number;
   work_id: string;
   dict: string;
+  image: string;
 }
