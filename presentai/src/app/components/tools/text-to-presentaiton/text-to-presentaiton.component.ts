@@ -45,23 +45,52 @@ export class TextToPresentaitonComponent implements OnInit {
         return;
       }
     }
-
-    this.textToPptx.createSlides(text, this.tool).subscribe((response: Blob) => {
-      this.isShow = true;
-      this.durum = "Your file is successfully created. The download will be started automatically. You can also download by clicking this button: ";
-
-      const url = window.URL.createObjectURL(response);
-      //const link = document.createElement('a');
-      //link.href = url;
-      const link = document.getElementById('downloadLink') as HTMLAnchorElement
-      link.href = url
-      link.setAttribute('download', 'presentation.pptx'); // replace 'file.extension' with your expected file name or extension
-      link.click();
-    },
-      error => {
+    if (this.tool == 1 || this.tool == 2) {
+      this.textToPptx.createSlides(text, this.tool).subscribe((response: Blob) => {
         this.isShow = true;
-        this.isError = true;
-        this.durum="Sorry, an error occured. Please try again or contact to authors."
-      })
+        this.durum = "Your file is successfully created. The download will be started automatically. You can also download by clicking this button: ";
+
+        const url = window.URL.createObjectURL(response);
+        //const link = document.createElement('a');
+        //link.href = url;
+        const link = document.getElementById('downloadLink') as HTMLAnchorElement
+        link.href = url
+        link.setAttribute('download', 'presentation.pptx'); // replace 'file.extension' with your expected file name or extension
+        link.click();
+        this.isError = false;
+        return;
+      },
+        error => {
+          this.isShow = true;
+          this.isError = true;
+          this.durum = "Sorry, an error occured. Please try again or contact to authors."
+          return;
+        });
+    }
+
+    if (this.tool == 3) {
+      this.textToPptx.createSlidesWithGPTautomated(text).subscribe((response: any) => {
+          this.isShow = true;
+          this.durum = "Your file is successfully created. The download will be started automatically. You can also download by clicking this button: ";
+
+          const url = window.URL.createObjectURL(response);
+          //const link = document.createElement('a');
+          //link.href = url;
+          const link = document.getElementById('downloadLink3') as HTMLAnchorElement
+          link.href = url
+          link.setAttribute('download', 'presentation.pptx'); // replace 'file.extension' with your expected file name or extension
+          link.click();
+          this.isError = false;
+          return;
+        },
+        error => {
+          this.isShow = true;
+          this.isError = true;
+          this.durum = "Sorry, an error occured. Please try again or contact to authors."
+          return;
+        }
+        )
+    }
+    
   }
 }

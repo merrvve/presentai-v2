@@ -20,6 +20,6 @@ export class TextToPptxService {
   }
 
   createSlidesWithGPTautomated(text: string) {
-    
+    return this.http.post(environment.apiUrl + '/api/create-slides-openai', { text: text }, { headers: this.httpHeaders, responseType: 'blob' as 'json'  });    
   }
 }

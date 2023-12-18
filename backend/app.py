@@ -4,17 +4,32 @@ import uuid
 import pptxOperations
 import pdfOperations
 import pubmedOperations
+import openaiOperations
 
 app = Flask(__name__)
 CORS(app)
 
 @app.route("/hello")
 def hello_world():
-    work_id=str(uuid.uuid4())
+    #work_id=str(uuid.uuid4())
 
-    result=pubmedOperations.searchPubmed('mirna and vitamin d',work_id)
-    
+    #result=pubmedOperations.searchPubmed('mirna and vitamin d',work_id)
+    openaiOperations.openaiCompletion("x")
+    result="ok"
     return result
+
+@app.route("/api/create-slides-openai", methods=['POST'])
+def create_slides_openai():
+    message = request.get_json()
+    work_id=str(uuid.uuid4())
+    filename=work_id+'.pptx'
+    result=openaiOperations.openaiCompletion(message['text'])
+    if not result:
+        jsonify({'message': 'Cannot create pptx file'}), 400
+    if(pptxOperations.create_presentation(result,filename,True)):
+        return send_from_directory('userDocs', filename, as_attachment=True), 200
+    else:
+        return jsonify({'message': 'Cannot create pptx file'}), 400
 
 @app.route("/api/search-pubmed", methods=['POST'])
 def serach_pubmed():
@@ -43,7 +58,6 @@ def create_slides():
             return send_from_directory('userDocs', filename, as_attachment=True), 200
         else:
             return jsonify({'message': 'Cannot create pptx file'}), 400
-        return "ok"
     else:
         filename = str(uuid.uuid4()) +'.pptx'
         

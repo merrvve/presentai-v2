@@ -20,11 +20,17 @@ def create_pptx(textInput,filename,isGPT):
         return False
     if not filename:
         return False
-    prs = Presentation()
     if(isGPT==False):
         slides = textInput.split('\n\n')
     else:
         slides = json.loads(textInput)
+    
+    return createPresentation(slides,filename,isGPT)
+
+def create_presentation(slides,filename,isGPT):
+    print(slides,type(slides))
+    prs = Presentation()
+    
     slide1 = prs.slides.add_slide(prs.slide_layouts[0])
     title = slide1.shapes.title
     subtitle = slide1.placeholders[1]
