@@ -15,17 +15,6 @@ from pptx import Presentation
 import json
 import os
 
-def create_pptx(textInput,filename,isGPT):
-    if not textInput:
-        return False
-    if not filename:
-        return False
-    if(isGPT==False):
-        slides = textInput.split('\n\n')
-    else:
-        slides = json.loads(textInput)
-    
-    return createPresentation(slides,filename,isGPT)
 
 def create_presentation(slides,filename,isGPT):
     print(slides,type(slides))
@@ -54,3 +43,15 @@ def create_presentation(slides,filename,isGPT):
     filepath=os.path.join('userDocs',filename)     
     prs.save(filepath)
     return True
+
+def create_pptx(textInput,filename,isGPT):
+    if not textInput:
+        return False
+    if not filename:
+        return False
+    if(isGPT==False):
+        slides = textInput.split('\n\n')
+    else:
+        slides = json.loads(textInput)
+    
+    return create_presentation(slides,filename,isGPT)

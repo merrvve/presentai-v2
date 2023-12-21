@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\backend",
     "\\presentai",
     "\\presentai\\src",
     "\\presentai\\src\\app",
     "\\presentai\\src\\app\\components",
     "\\presentai\\src\\app\\components\\tools",
-    "\\presentai\\src\\app\\components\\tools\\extractpdf",
-    "\\presentai\\src\\app\\components\\tools\\pubmed-abstracts",
+    "\\presentai\\src\\app\\components\\tools\\text-to-presentaiton",
     "\\presentai\\src\\app\\models",
     "\\presentai\\src\\app\\services"
   ],
-  "SelectedNode": "\\backend\\app.py",
+  "SelectedNode": "\\backend\\pptxOperations.py",
   "PreviewInSolutionExplorer": false
 }

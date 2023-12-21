@@ -5,9 +5,28 @@ import pptxOperations
 import pdfOperations
 import pubmedOperations
 import openaiOperations
+import os
+from pymongo import MongoClient
+from dotenv import load_dotenv
+from datetime import datetime
+import pytz
+
+load_dotenv()
+
+
 
 app = Flask(__name__)
 CORS(app)
+
+
+istanbul = pytz.timezone('Europe/Istanbul')
+DB_CONNECTION_STRING = os.getenv('DB_CONNECTION_STRING')
+
+
+
+# MongoDB setup
+client = MongoClient(DB_CONNECTION_STRING)  # Replace with your MongoDB connection string
+db = client['presentai']
 
 @app.route("/hello")
 def hello_world():
@@ -17,6 +36,25 @@ def hello_world():
     openaiOperations.openaiCompletion("x")
     result="ok"
     return result
+
+@app.route("/api/add-contact", methods=['POST'])
+def add_contact():
+    contact = request.get_json()
+    if not contact:
+        return jsonify({'message': 'No data provided'}), 400
+    contact['created_date']= datetime.now(istanbul)
+    db.contacts.insert_one(contact)
+    return jsonify("ok")
+
+@app.route("/api/add-notify-list", methods=['POST'])
+def add_notify():
+    contact = request.get_json()
+    if not contact:
+        return jsonify({'message': 'No data provided'}), 400
+    contact['created_date']= datetime.now(istanbul)
+    db.notifyList.insert_one(contact)
+    return jsonify("ok")
+
 
 @app.route("/api/create-slides-openai", methods=['POST'])
 def create_slides_openai():

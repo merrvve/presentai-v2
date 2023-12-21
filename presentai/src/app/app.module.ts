@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { LimitPipe } from './pipes/limit.pipe';
 import { AboutComponent } from './components/about/about.component';
 import { PubmedAbstractsComponent } from './components/tools/pubmed-abstracts/pubmed-abstracts.component';
+import { NewsletterComponent } from './components/newsletter/newsletter.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { PubmedAbstractsComponent } from './components/tools/pubmed-abstracts/pu
     LimitPipe,
     AboutComponent,
     PubmedAbstractsComponent,
+    NewsletterComponent,
   ],
   imports: [
     BrowserModule,

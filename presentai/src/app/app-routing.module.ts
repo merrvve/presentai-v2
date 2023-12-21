@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { ExtractpdfComponent } from './components/tools/extractpdf/extractpdf.component';
 import { PubmedAbstractsComponent } from './components/tools/pubmed-abstracts/pubmed-abstracts.component';
@@ -8,6 +9,7 @@ import { ToolsListComponent } from './components/tools/tools-list/tools-list.com
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'extract-pdf', component: ExtractpdfComponent },
   { path: 'text-to-pptx', component: TextToPresentaitonComponent },
   { path: 'pubmed-abstracts', component: PubmedAbstractsComponent },
