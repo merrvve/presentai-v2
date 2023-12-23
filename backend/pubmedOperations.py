@@ -97,7 +97,7 @@ def searchPubmed(query,work_id):
     fetch_querykey = "&query_key=" + re.findall("<QueryKey>(\d+?)</QueryKey>",search_data)[0]
     # other efetch settings
     fetch_eutil = 'efetch.fcgi?'
-    retmax = 10
+    retmax = 20
     retstart = 0
     fetch_retstart = "&retstart=" + str(retstart)
     fetch_retmax = "&retmax=" + str(retmax)
@@ -108,8 +108,10 @@ def searchPubmed(query,work_id):
     run = True
     all_abstracts = list()
     loop_counter = 1
-    max_total =20
+    max_total =100
     while run:
+        if (retstart > max_total):
+            run = False
         print("this is efetch run number " + str(loop_counter))
         loop_counter += 1
         fetch_retstart = "&retstart=" + str(retstart)
@@ -125,7 +127,7 @@ def searchPubmed(query,work_id):
         sleep(2)
         # update retstart to download the next chunk of abstracts
         retstart = retstart + retmax
-        if (retstart > total_abstract_count or retstart > max_total):
+        if (retstart > total_abstract_count):
             run = False
         # split the data into individual abstracts
     all_abstracts = fetch_data.split("\n\n\n")

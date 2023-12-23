@@ -22,6 +22,8 @@ import { LimitPipe } from './pipes/limit.pipe';
 import { AboutComponent } from './components/about/about.component';
 import { PubmedAbstractsComponent } from './components/tools/pubmed-abstracts/pubmed-abstracts.component';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
+import { PdfDropDirective } from './directives/pdf-drop.directive';
+import { ShareComponent } from './components/share/share.component';
 
 
 @NgModule({
@@ -42,6 +44,8 @@ import { NewsletterComponent } from './components/newsletter/newsletter.componen
     AboutComponent,
     PubmedAbstractsComponent,
     NewsletterComponent,
+    PdfDropDirective,
+    ShareComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { iPubmedResult } from '../../../models/iPubmedResult.interface';
+import { iShareTool } from '../../../models/iShareTool.interface';
 import { PubmedService } from '../../../services/pubmed.service';
 
 @Component({
@@ -11,6 +12,8 @@ export class PubmedAbstractsComponent {
   public isLoading: boolean = false;
   public isResult: boolean = false;
   public isError: boolean = false;
+  public tool: iShareTool = { title: "Pubmed Batch Abstract Download Tool", link: "pubmed-abstracts" }
+
   public result: iPubmedResult = {
       total_abstracts: 0,
       downloaded_abstracts: 0,

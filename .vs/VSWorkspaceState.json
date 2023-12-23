@@ -6,11 +6,11 @@
     "\\presentai\\src",
     "\\presentai\\src\\app",
     "\\presentai\\src\\app\\components",
-    "\\presentai\\src\\app\\components\\tools",
-    "\\presentai\\src\\app\\components\\tools\\text-to-presentaiton",
-    "\\presentai\\src\\app\\models",
-    "\\presentai\\src\\app\\services"
+    "\\presentai\\src\\app\\components\\footer",
+    "\\presentai\\src\\app\\components\\navbar",
+    "\\presentai\\src\\app\\components\\newsletter",
+    "\\presentai\\src\\assets"
   ],
-  "SelectedNode": "\\backend\\pptxOperations.py",
+  "SelectedNode": "\\presentai",
   "PreviewInSolutionExplorer": false
 }

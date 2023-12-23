@@ -46,6 +46,16 @@ def add_contact():
     db.contacts.insert_one(contact)
     return jsonify("ok")
 
+@app.route("/api/add-log", methods=['POST'])
+def add_log():
+    log = request.get_json()
+    if not log:
+        return jsonify({'message': 'No data provided'}), 400
+    log['created_date']= datetime.now(istanbul)
+    db.logs.insert_one(log)
+    return jsonify("ok")
+
+
 @app.route("/api/add-notify-list", methods=['POST'])
 def add_notify():
     contact = request.get_json()

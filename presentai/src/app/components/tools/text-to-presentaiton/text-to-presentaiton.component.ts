@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { iShareTool } from '../../../models/iShareTool.interface';
 import { iSlide } from '../../../models/iSlide.interface';
 import { TextToPptxService } from '../../../services/text-to-pptx.service';
 
@@ -15,6 +16,7 @@ export class TextToPresentaitonComponent implements OnInit {
   public durum = "";
   public isCopied = false;
   public prompt = "You are a helpful assistant. Organise this text content into summarised slides for a coherent and engaging presentation.Your response should be in JSON object list for slides and each slide should be with properties 'title' and 'content'.The text is: ";
+  public tooltoShare: iShareTool = { title: "Text to .pptx Convertion Tool", link: "text-to-pptx" }
 
   constructor(private textToPptx: TextToPptxService, private title: Title) {
     this.isShow = false;
