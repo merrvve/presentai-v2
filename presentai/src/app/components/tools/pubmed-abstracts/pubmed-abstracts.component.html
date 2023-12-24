@@ -11,8 +11,13 @@
       <input type="text" #textInput class="border-2 border-gray-300 p-2 rounded bg-transparent w-full" placeholder="Ex: bortezomib resistance" />
       <button class="mt-2 bg-pink-500 text-white rounded p-2 hover:bg-pink-600" (click)="onSubmit(textInput.value)">Download Abstracts</button>
       <div class="mt-2 text-xs text-gray-400">
-        When you click on the button, this tool searches PubMed for your query, downloads the latest 50 published article abstracts from the results, and provides them in a structured Excel file.
+        When you click on the button, this tool searches PubMed for your query, downloads the latest 100 published article abstracts from the results, and provides them in a structured Excel file.
       </div>
+      <ng-container *ngIf="isResult && !isError">
+        <div class="flex items-center justify-center mt-10">
+          <a href="https://www.buymeacoffee.com/mervsenv" target="_blank" class="m-2 p-2 rounded  text-pink-500 hover:bg-pink-500 hover:text-white"><i class="fa fa-coffee m-2"></i>Buy me a coffee</a>
+        </div>
+      </ng-container>
     </div>
     <div class=" h-auto col-span-2">
       <h2 class="md:ml-5 mb-5 underline col-span-2 decoration-pink-500 underline-offset-8 decoration-dashed font-semibold">Results:</h2>

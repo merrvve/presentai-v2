@@ -3,6 +3,12 @@ like and share+
 first tool loading absent+
 text to pptx second download link+
 abstract limit 100+
-buy me a coffee
+buy me a coffee linklerin düzenlenmesi
 https://www.buymeacoffee.com/mervsenv +
-log
+logların yerleştirilmesi
+toolların testi
+dark mode +
+text-to-pptx'te isresult ekle
+
+----
+word cloudu ikili kelimelerle yap

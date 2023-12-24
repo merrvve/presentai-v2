@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\backend",
     "\\presentai",
     "\\presentai\\src",
     "\\presentai\\src\\app",
     "\\presentai\\src\\app\\components",
-    "\\presentai\\src\\app\\components\\footer",
-    "\\presentai\\src\\app\\components\\navbar",
+    "\\presentai\\src\\app\\components\\contact",
+    "\\presentai\\src\\app\\components\\featured",
     "\\presentai\\src\\app\\components\\newsletter",
-    "\\presentai\\src\\assets"
+    "\\presentai\\src\\app\\components\\tools",
+    "\\presentai\\src\\app\\components\\tools\\extractpdf"
   ],
-  "SelectedNode": "\\presentai",
+  "SelectedNode": "\\presentai\\src\\app\\components\\tools\\text-to-presentaiton\\text-to-presentaiton.component.ts",
   "PreviewInSolutionExplorer": false
 }

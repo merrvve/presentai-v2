@@ -110,7 +110,7 @@ def searchPubmed(query,work_id):
     loop_counter = 1
     max_total =100
     while run:
-        if (retstart > max_total):
+        if (loop_counter==5):
             run = False
         print("this is efetch run number " + str(loop_counter))
         loop_counter += 1

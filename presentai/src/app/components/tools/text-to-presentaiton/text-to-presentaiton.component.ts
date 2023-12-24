@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { iShareTool } from '../../../models/iShareTool.interface';
 import { iSlide } from '../../../models/iSlide.interface';
+import { LogService } from '../../../services/log.service';
 import { TextToPptxService } from '../../../services/text-to-pptx.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class TextToPresentaitonComponent implements OnInit {
   public prompt = "You are a helpful assistant. Organise this text content into summarised slides for a coherent and engaging presentation.Your response should be in JSON object list for slides and each slide should be with properties 'title' and 'content'.The text is: ";
   public tooltoShare: iShareTool = { title: "Text to .pptx Convertion Tool", link: "text-to-pptx" }
 
-  constructor(private textToPptx: TextToPptxService, private title: Title) {
+  constructor(private textToPptx: TextToPptxService, private title: Title, private log: LogService) {
     this.isShow = false;
     this.durum = "";
   }
@@ -48,6 +49,7 @@ export class TextToPresentaitonComponent implements OnInit {
       }
     }
     if (this.tool == 1 || this.tool == 2) {
+      this.isShow = false;
       this.textToPptx.createSlides(text, this.tool).subscribe((response: Blob) => {
         this.isShow = true;
         this.durum = "Your file is successfully created. The download will be started automatically. You can also download by clicking this button: ";
@@ -55,7 +57,8 @@ export class TextToPresentaitonComponent implements OnInit {
         const url = window.URL.createObjectURL(response);
         //const link = document.createElement('a');
         //link.href = url;
-        const link = document.getElementById('downloadLink') as HTMLAnchorElement
+        let linkname = 'downloadLink' + String(this.tool);
+        const link = document.getElementById(linkname) as HTMLAnchorElement
         link.href = url
         link.setAttribute('download', 'presentation.pptx'); // replace 'file.extension' with your expected file name or extension
         link.click();
@@ -71,6 +74,7 @@ export class TextToPresentaitonComponent implements OnInit {
     }
 
     if (this.tool == 3) {
+      this.isShow = false;
       this.textToPptx.createSlidesWithGPTautomated(text).subscribe((response: any) => {
           this.isShow = true;
           this.durum = "Your file is successfully created. The download will be started automatically. You can also download by clicking this button: ";
@@ -93,6 +97,8 @@ export class TextToPresentaitonComponent implements OnInit {
         }
         )
     }
+
+    this.log.addLog(this.tool, 3);
     
   }
 }

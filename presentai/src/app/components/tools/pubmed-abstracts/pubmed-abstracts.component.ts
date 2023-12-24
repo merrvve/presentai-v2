@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { iPubmedResult } from '../../../models/iPubmedResult.interface';
 import { iShareTool } from '../../../models/iShareTool.interface';
+import { LogService } from '../../../services/log.service';
 import { PubmedService } from '../../../services/pubmed.service';
 
 @Component({
@@ -8,7 +10,7 @@ import { PubmedService } from '../../../services/pubmed.service';
   templateUrl: './pubmed-abstracts.component.html',
   styleUrls: ['./pubmed-abstracts.component.scss']
 })
-export class PubmedAbstractsComponent {
+export class PubmedAbstractsComponent implements OnInit {
   public isLoading: boolean = false;
   public isResult: boolean = false;
   public isError: boolean = false;
@@ -21,8 +23,13 @@ export class PubmedAbstractsComponent {
       dict: '',
       image: ''
   };
-  constructor(private pubmedService: PubmedService) {
+  constructor(private pubmedService: PubmedService, private title: Title, private log: LogService) {
   }
+
+  ngOnInit() {
+    this.title.setTitle("Presentai | Pubmed Batch Abstract Download Tool")
+  }
+
   onSubmit(query:string) {
     this.isLoading = true;
     this.isResult = false;
@@ -38,6 +45,8 @@ export class PubmedAbstractsComponent {
         this.isError = true;
         window.alert(error)
       });
+    this.log.addLog(5, 3);
+
   }
   onDownload() {
     if (this.result.work_id == '') {

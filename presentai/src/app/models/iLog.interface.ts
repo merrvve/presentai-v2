@@ -5,10 +5,11 @@
  * 4: view demo
  *
  * detailId:
- * 1: extractPdf
- * 2: text-to-pptx-1
- * 3: text-to-pptx-2
- * 4: text-to-pptx-3
+ * 1: text-to-pptx-1
+ * 2: text-to-pptx-2
+ * 3: text-to-pptx-3
+ * 4: extractPdf
+ * 
  * 5: pubmed-abstracts
  * 6: bmac
  * 

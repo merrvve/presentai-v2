@@ -112,39 +112,41 @@
         <label>Your Text:</label>
         <textarea class="w-full p-3 border-2 border-gray-200 rounded-lg mt-5 dark:bg-transparent dark:text-white" rows="6" #textInput></textarea>
         <!--<label>Split By:</label>
-        <input type="text" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mr-10" />
-        <label>Number of pieces in each slide:</label>
-        <input type="number" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mb-10" />-->
+    <input type="text" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mr-10" />
+    <label>Number of pieces in each slide:</label>
+    <input type="number" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mb-10" />-->
 
         <span class="text-gray-500 text-sm mt-2">Input text will be split by 'two line-breaks' into new slides; <br /> and each slide's content will be split by '.' to new items.</span>
         <button data-modal-target="progress-modal" data-modal-toggle="progress-modal" class="bg-pink-500 text-white rounded mt-2 p-3 float-right hover:bg-pink-600 " (click)="onSubmit(textInput.value)">Convert to .pptx</button>
-        <!-- Main modal -->
-        <div id="progress-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-          <div class="relative p-4 w-full max-w-md max-h-full">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-              <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="progress-modal">
-                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                </svg>
-                <span class="sr-only">Close</span>
-              </button>
-              <div class="p-4 md:p-5">
-                <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white mb-5">Status</h3>
-                <p class="text-gray-700 dark:text-gray-400 mb-5">
-                  {{durum}}
-                <p>
-                  <ng-container *ngIf="!isError">
-                    <div class="flex justify-center">
-                      <a id="downloadLink" class="rounded-lg hover:bg-gray-100"><img src="assets/pptx_icon.png" class="w-20 h-20 hover:bg-gray-100" />Download File</a>
+      </div>
+      <!-- Main modal -->
+      <div id="progress-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+          <!-- Modal content -->
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="progress-modal">
+              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+              </svg>
+              <span class="sr-only">Close</span>
+            </button>
+            <div class="p-4 md:p-5">
+              <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white mb-5">Status</h3>
+              <p class="text-gray-700 dark:text-gray-400 mb-5">
+                {{durum}}
+              <p>
+                <ng-container *ngIf="!isError">
+                  <div class="flex flex-col items-center justify-center mt-5">
+                    <a id="downloadLink1" class="rounded-lg hover:bg-gray-100"><img src="assets/pptx_icon.png" class="w-20 h-20 hover:bg-gray-100" />Download File</a>
+                 
+                      <a href="https://www.buymeacoffee.com/mervsenv" target="_blank" class="m-2 p-2 rounded  text-pink-500 hover:bg-pink-500 hover:text-white"><i class="fa fa-coffee m-2"></i>Buy me a coffee</a>
                     </div>
-
-                  </ng-container>
-                  <!-- Modal footer -->
-                  <div class="flex mt-6 space-x-2 rtl:space-x-reverse">
-                    <button data-modal-hide="progress-modal" type="button" class="border text-pink-500 border-pink-500 rounded p-2 mb-2 hover:text-white hover:bg-pink-500 duration-300">Close</button>
-                  </div>
-              </div>
+                 
+                </ng-container>
+                <!-- Modal footer -->
+                <div class="flex mt-6 space-x-2 rtl:space-x-reverse">
+                  <button data-modal-hide="progress-modal" type="button" class="border text-pink-500 border-pink-500 rounded p-2 mb-2 hover:text-white hover:bg-pink-500 duration-300">Close</button>
+                </div>
             </div>
           </div>
         </div>
@@ -176,9 +178,9 @@
         <label class="font-semibold text-md">Resulting json:</label>
         <textarea class="w-full p-3 border-2 border-gray-200 rounded-lg mt-2  dark:bg-transparent dark:text-white" rows="6" #jsonInput placeholder="Copy and paste the resulting JSON here."></textarea>
         <!--<label>Split By:</label>
-        <input type="text" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mr-10" />
-        <label>Number of pieces in each slide:</label>
-        <input type="number" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mb-10" />-->
+    <input type="text" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mr-10" />
+    <label>Number of pieces in each slide:</label>
+    <input type="number" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mb-10" />-->
         <span class="text-gray-500 text-sm mt-2">
           The JSON object list must be surrounded with square brackets.
         </span>
@@ -203,12 +205,13 @@
                 {{durum}}
               <p>
                 <ng-container *ngIf="!isError">
-                  <div class="flex justify-center">
-                    <button id="downloadLink" class="rounded-lg hover:bg-gray-100"><img src="assets/pptx_icon.png" class="w-20 h-20 hover:bg-gray-100" />Download File</button>
+                 
+                  <div class="flex flex-col items-center justify-center mt-5">
+                    <a id="downloadLink2" class="rounded-lg hover:bg-gray-100"><img src="assets/pptx_icon.png" class="w-20 h-20 hover:bg-gray-100" />Download File</a>
+
+                    <a href="https://www.buymeacoffee.com/mervsenv" target="_blank" class="m-2 p-2 rounded  text-pink-500 hover:bg-pink-500 hover:text-white"><i class="fa fa-coffee m-2"></i>Buy me a coffee</a>
                   </div>
-                  <div class="flex justify-center">
-                    <button class="rounded-lg hover:bg-gray-100"><img src="assets/bmac-sm.png" class="w-20 h-20 hover:bg-gray-100" />Buy me a caoffee</button>
-                  </div>
+
                 </ng-container>
 
 
@@ -225,9 +228,9 @@
         <label>Your Text:</label>
         <textarea class="w-full p-3 border-2 border-gray-200 rounded-lg mt-5 dark:bg-transparent dark:text-white" rows="6" #textInputforGPT></textarea>
         <!--<label>Split By:</label>
-        <input type="text" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mr-10" />
-        <label>Number of pieces in each slide:</label>
-        <input type="number" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mb-10" />-->
+    <input type="text" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mr-10" />
+    <label>Number of pieces in each slide:</label>
+    <input type="number" class="ml-2 p-2 border-2 border-gray-200 rounded-lg mt-5 mb-10" />-->
 
         <span class="text-gray-500 text-sm mt-2">Input text will be sent to chatGPT via API calls.</span>
         <button data-modal-target="progress-modal3" data-modal-toggle="progress-modal3" class="bg-pink-500 text-white rounded mt-2 p-3 float-right hover:bg-pink-600 " (click)="onSubmit(textInputforGPT.value)">Convert to .pptx</button>
@@ -249,12 +252,13 @@
                 {{durum}}
               <p>
                 <ng-container *ngIf="!isError">
-                  <div class="flex justify-center">
+                  
+                  <div class="flex flex-col items-center justify-center mt-5">
                     <a id="downloadLink3" class="rounded-lg hover:bg-gray-100"><img src="assets/pptx_icon.png" class="w-20 h-20 hover:bg-gray-100" />Download File</a>
+
+                    <a href="https://www.buymeacoffee.com/mervsenv" target="_blank" class="m-2 p-2 rounded  text-pink-500 hover:bg-pink-500 hover:text-white"><i class="fa fa-coffee m-2"></i>Buy me a coffee</a>
                   </div>
-                  <div class="flex justify-center">
-                    <button class="rounded-lg hover:bg-gray-100"><img src="assets/bmac-sm.png" class="w-20 h-20 hover:bg-gray-100" />Buy me a caoffee</button>
-                  </div>
+
                 </ng-container>
                 <!-- Modal footer -->
                 <div class="flex mt-6 space-x-2 rtl:space-x-reverse">

@@ -71,7 +71,9 @@ def create_slides_openai():
     message = request.get_json()
     work_id=str(uuid.uuid4())
     filename=work_id+'.pptx'
+    print(message)
     result=openaiOperations.openaiCompletion(message['text'])
+    print(result)
     if not result:
         jsonify({'message': 'Cannot create pptx file'}), 400
     if(pptxOperations.create_presentation(result,filename,True)):

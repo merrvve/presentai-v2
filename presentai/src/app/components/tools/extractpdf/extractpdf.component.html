@@ -22,6 +22,11 @@
           <span class="title text-pink-500 uppercase m-4">or drop files here</span>
         </span>
       </div>
+      <ng-container *ngIf="isResult">
+        <div class="flex items-center justify-center mt-10">
+          <a href="https://www.buymeacoffee.com/mervsenv" target="_blank" class="m-2 p-2 rounded  text-pink-500 hover:bg-pink-500 hover:text-white"><i class="fa fa-coffee m-2"></i>Buy me a coffee</a>
+        </div>
+      </ng-container>
     </div>
     <div class=" h-auto col-span-2">
       <h2 class="ml-5 mb-5 underline col-span-2 decoration-pink-500 underline-offset-8 decoration-dashed font-semibold">Output</h2>

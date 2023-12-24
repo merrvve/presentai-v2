@@ -15,16 +15,22 @@ client = OpenAI(api_key = os.getenv('OPENAI_API_KEY'))
 def split_string_to_parts(input_string, part_length):
     """
     Split a string into parts where each part has a length of 'part_length'.
+    If the length of the input string is less than or equal to 'part_length', 
+    return a list containing the input string as its only element.
     """
-    return [input_string[i:i+part_length] for i in range(0, len(input_string), part_length)]
+    if len(input_string) <= part_length:
+        return [input_string]
+    return [input_string[i:i + part_length] for i in range(0, len(input_string), part_length)]
+
 
 
 def openaiCompletion(content):
+    
     parts=split_string_to_parts(content,2500)
     slides={'slides':[]}
     x=len(parts)
-
-    for i in range(1,x):
+    print(parts)
+    for i in range(0,x):
         print(i,x)
         last_slide=''
         completion = client.chat.completions.create(
@@ -37,7 +43,7 @@ If there was a previous part, the last slide content was: {2}
 
 Please create a json objects list  that each one has a title and a content property. example structure: {{slides:[{{title:,content:}}]}}. The text is:
 
-  """.format(str(i),str(x),last_slide)},
+  """.format(str(i+1),str(x+1),last_slide)},
             {"role": "user", "content": parts[i-1]}
           ],
           response_format={"type": "json_object"}
