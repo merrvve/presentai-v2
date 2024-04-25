@@ -2,7 +2,8 @@ from flask import Flask, request, json, jsonify, send_from_directory
 from flask_cors import CORS
 import uuid
 import pptxOperations
-import pdfOperations
+# import pdfOperations
+
 import pubmedOperations
 import openaiOperations
 import os
@@ -115,10 +116,10 @@ def create_slides():
         pptxOperations.create_pptx(text,filename,False)
         return jsonify(filename), 200
 
-@app.route("/api/extract-pdf-tables", methods=['POST', 'GET'])
-def extract_pdf_tables():
-    if request.method=='POST':
-        return jsonify("ok")
-    else:
-        pdfOperations.extract_tables("foo.pdf")
-        return jsonify("ok")
+# @app.route("/api/extract-pdf-tables", methods=['POST', 'GET'])
+# def extract_pdf_tables():
+#     if request.method=='POST':
+#         return jsonify("ok")
+#     else:
+#         pdfOperations.extract_tables("foo.pdf")
+#         return jsonify("ok")
