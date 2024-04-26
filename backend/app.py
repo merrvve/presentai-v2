@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+
 from flask import Flask, request, json, jsonify, send_from_directory
 from flask_cors import CORS
 import uuid
