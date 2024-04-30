@@ -11,6 +11,7 @@ import { TextToPptxService } from '../../../services/text-to-pptx.service';
   styleUrls: ['./text-to-presentaiton.component.scss'],
 })
 export class TextToPresentaitonComponent implements OnInit {
+  public isLoading = false;
   public tool = 1;
   public isShow = false;
   public isError = false;
@@ -87,6 +88,7 @@ export class TextToPresentaitonComponent implements OnInit {
     }
 
     if (this.tool == 3) {
+      this.isLoading = true;
       this.isShow = false;
       this.textToPptx.createSlidesWithGPTautomated(text).subscribe(
         (response: any) => {
@@ -104,11 +106,13 @@ export class TextToPresentaitonComponent implements OnInit {
           link.setAttribute('download', 'presentation.pptx'); // replace 'file.extension' with your expected file name or extension
           link.click();
           this.isError = false;
+          this.isLoading=false;
           return;
         },
         (error) => {
           this.isShow = true;
           this.isError = true;
+          this.isLoading=false;
           this.durum =
             'Sorry, an error occured. Please try again or contact to authors.';
           return;
@@ -117,5 +121,12 @@ export class TextToPresentaitonComponent implements OnInit {
     }
 
     this.log.addLog(this.tool, 3);
+  }
+
+  onTest(text:string) {
+  this.textToPptx.testGPT(text).subscribe({
+    next:(result)=> console.log(result),
+    error:(error)=> console.log(error)
+  })  
   }
 }

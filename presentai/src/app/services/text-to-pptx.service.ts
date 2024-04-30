@@ -30,4 +30,13 @@ export class TextToPptxService {
       { headers: this.httpHeaders, responseType: 'blob' as 'json' },
     );
   }
+
+  testGPT(text: string) {
+    return this.http.post(
+      environment.apiUrl + '/test-openai',
+      { text: text },
+      { headers: this.httpHeaders },
+    );
+  }
+
 }
