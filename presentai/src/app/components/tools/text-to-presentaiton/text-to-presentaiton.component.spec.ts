@@ -8,7 +8,7 @@ describe('TextToPresentaitonComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TextToPresentaitonComponent]
+      declarations: [TextToPresentaitonComponent],
     });
     fixture = TestBed.createComponent(TextToPresentaitonComponent);
     component = fixture.componentInstance;

@@ -9,14 +9,14 @@
  * 2: text-to-pptx-2
  * 3: text-to-pptx-3
  * 4: extractPdf
- * 
+ *
  * 5: pubmed-abstracts
  * 6: bmac
- * 
+ *
  */
 
 export interface iLog {
   clickId: number;
-  detailId: number
+  detailId: number;
   location: string;
 }

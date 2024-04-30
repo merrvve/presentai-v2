@@ -8,7 +8,7 @@ describe('PubmedAbstractsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PubmedAbstractsComponent]
+      declarations: [PubmedAbstractsComponent],
     });
     fixture = TestBed.createComponent(PubmedAbstractsComponent);
     component = fixture.componentInstance;

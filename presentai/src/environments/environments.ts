@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://127.0.0.1:5000',
-  url: 'https://presentai.net/'
-}
+  apiUrl: 'https://104.247.166.246',
+  url: 'https://presentai.net/',
+};

@@ -8,7 +8,7 @@ describe('ExtractpdfComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ExtractpdfComponent]
+      declarations: [ExtractpdfComponent],
     });
     fixture = TestBed.createComponent(ExtractpdfComponent);
     component = fixture.componentInstance;

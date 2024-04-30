@@ -13,12 +13,11 @@ const routes: Routes = [
   { path: 'extract-pdf', component: ExtractpdfComponent },
   { path: 'text-to-pptx', component: TextToPresentaitonComponent },
   { path: 'pubmed-abstracts', component: PubmedAbstractsComponent },
-  { path: 'tools-list', component: ToolsListComponent }
-
+  { path: 'tools-list', component: ToolsListComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

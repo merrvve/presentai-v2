@@ -1,7 +1,13 @@
-import { Directive, HostListener, EventEmitter, Output, ElementRef } from '@angular/core';
+import {
+  Directive,
+  HostListener,
+  EventEmitter,
+  Output,
+  ElementRef,
+} from '@angular/core';
 
 @Directive({
-  selector: '[appPdfDrop]'
+  selector: '[appPdfDrop]',
 })
 export class PdfDropDirective {
   @Output() fileDropped = new EventEmitter<File>();
@@ -24,7 +30,7 @@ export class PdfDropDirective {
     evt.preventDefault();
     evt.stopPropagation();
     this.el.nativeElement.classList.remove('drag-over');
-    
+
     const files = evt.dataTransfer?.files;
     if (files && files.length > 0) {
       const file = files[0];
@@ -34,7 +40,9 @@ export class PdfDropDirective {
     }
   }
 
-  @HostListener('change', ['$event.target.files']) public onChange(files: FileList) {
+  @HostListener('change', ['$event.target.files']) public onChange(
+    files: FileList,
+  ) {
     if (files && files.length > 0) {
       const file = files[0];
       if (file.type === 'application/pdf') {

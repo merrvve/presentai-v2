@@ -5,11 +5,11 @@ import { ToolsServiceService } from '../../services/tools-service.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
   public show = false;
-  public tools : iTool[] = []
+  public tools: iTool[] = [];
   constructor(private toolsService: ToolsServiceService) {
     this.tools = this.toolsService.tools;
   }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ThemeService {
   private darkMode;
@@ -11,8 +11,7 @@ export class ThemeService {
     document.documentElement.classList.toggle('dark', this.darkMode);
     if (this.darkMode) {
       localStorage.setItem('mode', 'dark');
-    }
-    else {
+    } else {
       localStorage.setItem('mode', 'light');
     }
   }
@@ -21,23 +20,18 @@ export class ThemeService {
     return this.darkMode;
   }
 
-  
   constructor() {
     let mode = localStorage.getItem('mode');
     if (mode == 'dark') {
       this.darkMode = true;
-    }
-    else if (mode == 'light') {
+    } else if (mode == 'light') {
       this.darkMode = false;
-    }
-    else {
+    } else {
       this.darkMode =
         window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches;
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
-    
-    document.documentElement.classList.toggle('dark', this.darkMode);
-    
 
+    document.documentElement.classList.toggle('dark', this.darkMode);
   }
 }

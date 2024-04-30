@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -24,7 +23,6 @@ import { PubmedAbstractsComponent } from './components/tools/pubmed-abstracts/pu
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
 import { PdfDropDirective } from './directives/pdf-drop.directive';
 import { ShareComponent } from './components/share/share.component';
-
 
 @NgModule({
   declarations: [
@@ -52,9 +50,9 @@ import { ShareComponent } from './components/share/share.component';
     FormsModule,
     AppRoutingModule,
     ClipboardModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
