@@ -60,8 +60,8 @@ export class TextToPresentaitonComponent implements OnInit {
     }
     if (this.tool == 1 || this.tool == 2) {
       this.isShow = false;
-      this.textToPptx.createSlides(text, this.tool).subscribe(
-        (response: Blob) => {
+      this.textToPptx.createSlides(text, this.tool).subscribe( {
+        next: (response: Blob) => {
           this.isShow = true;
           this.durum =
             'Your file is successfully created. The download will be started automatically. You can also download by clicking this button: ';
@@ -77,21 +77,22 @@ export class TextToPresentaitonComponent implements OnInit {
           this.isError = false;
           return;
         },
-        (error) => {
+        error: (error) => {
           this.isShow = true;
           this.isError = true;
           this.durum =
             'Sorry, an error occured. Please try again or contact to authors.';
           return;
         },
-      );
+    });
     }
 
     if (this.tool == 3) {
       this.isLoading = true;
       this.isShow = false;
       this.textToPptx.createSlidesWithGPTautomated(text).subscribe(
-        (response: any) => {
+       { 
+        next: (response: any) => {
           this.isShow = true;
           this.durum =
             'Your file is successfully created. The download will be started automatically. You can also download by clicking this button: ';
@@ -109,7 +110,7 @@ export class TextToPresentaitonComponent implements OnInit {
           this.isLoading=false;
           return;
         },
-        (error) => {
+        error: (error) => {
           this.isShow = true;
           this.isError = true;
           this.isLoading=false;
@@ -117,7 +118,7 @@ export class TextToPresentaitonComponent implements OnInit {
             'Sorry, an error occured. Please try again or contact to authors.';
           return;
         },
-      );
+    });
     }
 
     this.log.addLog(this.tool, 3);

@@ -40,18 +40,18 @@ export class PubmedAbstractsComponent implements OnInit {
     this.isLoading = true;
     this.isResult = false;
     this.isError = false;
-    this.pubmedService.searchPubmed(query).subscribe(
-      (result) => {
+    this.pubmedService.searchPubmed(query).subscribe( {
+    next:(result) => {
         this.isLoading = false;
         this.isResult = true;
         this.result = result;
         console.log(result);
       },
-      (error) => {
+      error:(error) => {
         this.isError = true;
         window.alert(error);
       },
-    );
+  });
     this.log.addLog(5, 3);
   }
   onDownload() {
@@ -59,8 +59,8 @@ export class PubmedAbstractsComponent implements OnInit {
       window.alert('File not found.');
       return;
     }
-    this.pubmedService.downloadFile(this.result.work_id).subscribe(
-      (response: Blob) => {
+    this.pubmedService.downloadFile(this.result.work_id).subscribe( {
+      next: (response: Blob) => {
         const url = window.URL.createObjectURL(response);
         //const link = document.createElement('a');
         //link.href = url;
@@ -71,9 +71,9 @@ export class PubmedAbstractsComponent implements OnInit {
         link.setAttribute('download', 'abstracts.xlsx'); // replace 'file.extension' with your expected file name or extension
         link.click();
       },
-      (error) => {
+      error: (error) => {
         window.alert(error);
       },
-    );
+  });
   }
 }
