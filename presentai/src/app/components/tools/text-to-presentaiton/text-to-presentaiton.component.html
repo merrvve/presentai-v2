@@ -251,7 +251,7 @@
               <p class="text-gray-700 dark:text-gray-400 mb-5">
                 {{durum}}
               <p>
-                <a [hidden]="isLoading" id="downloadLink3" class="rounded-lg hover:bg-gray-100"><img src="assets/pptx_icon.png" class="w-20 h-20 hover:bg-gray-100" />Download File</a>
+                <a [hidden]="isLoading || isError" id="downloadLink3" class="rounded-lg hover:bg-gray-100"><img src="assets/pptx_icon.png" class="w-20 h-20 hover:bg-gray-100" />Download File</a>
 
                 <ng-container *ngIf="!isError && !isLoading">
                   
