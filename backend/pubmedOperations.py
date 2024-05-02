@@ -65,7 +65,7 @@ def createWordCloud(content,work_id):
     byte_array = buf.getvalue()
     encoded_image = base64.b64encode(byte_array).decode('utf-8')
     
-    # Don't forget to close the buffer
+    # close the buffer
     buf.close()
     plt.close()
     return encoded_image
@@ -92,9 +92,11 @@ def searchPubmed(query,work_id):
     result['total_abstracts']=total_abstract_count
     if total_abstract_count < 1:
         return result
+    
     # obtain webenv and querykey settings for efetch command
     fetch_webenv = "&WebEnv=" + re.findall ("<WebEnv>(\S+)<\/WebEnv>", search_data)[0]
     fetch_querykey = "&query_key=" + re.findall("<QueryKey>(\d+?)</QueryKey>",search_data)[0]
+    
     # other efetch settings
     fetch_eutil = 'efetch.fcgi?'
     retmax = 20
@@ -112,13 +114,11 @@ def searchPubmed(query,work_id):
     while run:
         if (loop_counter==5):
             run = False
-        print("this is efetch run number " + str(loop_counter))
         loop_counter += 1
         fetch_retstart = "&retstart=" + str(retstart)
         fetch_retmax = "&retmax=" + str(retmax)
         # create the efetch url
         fetch_url = base_url+fetch_eutil+db+fetch_querykey+fetch_webenv+fetch_retstart+fetch_retmax+fetch_retmode+fetch_rettype
-        print(fetch_url)
         # open the efetch url
         f = urllib.request.urlopen (fetch_url)
         fetch_data +=  f.read().decode('utf-8') + '\n\n\n'
@@ -131,7 +131,7 @@ def searchPubmed(query,work_id):
             run = False
         # split the data into individual abstracts
     all_abstracts = fetch_data.split("\n\n\n")
-    print("a total of " + str(len(all_abstracts)) + " abstracts have been downloaded.\n")
+    result['message']="a total of " + str(len(all_abstracts)) + " abstracts have been downloaded.\n"
 
     abstracts=fetch_data.split('\n\n\n')
     abstracts_list=[]
