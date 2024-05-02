@@ -17,7 +17,6 @@ import os
 
 
 def create_presentation(slides,filename,isGPT):
-    print(slides,type(slides))
     prs = Presentation()
     
     slide1 = prs.slides.add_slide(prs.slide_layouts[0])

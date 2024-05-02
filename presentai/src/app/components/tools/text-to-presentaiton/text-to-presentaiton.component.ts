@@ -96,16 +96,21 @@ export class TextToPresentaitonComponent implements OnInit {
           this.isShow = true;
           this.durum =
             'Your file is successfully created. The download will be started automatically. You can also download by clicking this button: ';
+         // Create a URL for the Blob object
+  const url = window.URL.createObjectURL(response);
+  
+  // Get the download link element
+  const link = document.getElementById('downloadLink3') as HTMLAnchorElement;
+  
+  // Set the URL as the href attribute of the anchor element
+  link.href = url;
+  
+  // Set the desired filename for the download
+  link.setAttribute('download', 'presentation.pptx');
 
-          const url = window.URL.createObjectURL(response);
-          //const link = document.createElement('a');
-          //link.href = url;
-          const link = document.getElementById(
-            'downloadLink3',
-          ) as HTMLAnchorElement;
-          link.href = url;
-          link.setAttribute('download', 'presentation.pptx'); // replace 'file.extension' with your expected file name or extension
-          link.click();
+  // Trigger the click event of the anchor element to start the download
+  link.click();
+  
           this.isError = false;
           this.isLoading=false;
           return;

@@ -70,5 +70,4 @@ You are a helpful assistant
         #slides['slides'].extend(response['slides'])
 
   response=json.loads(completion.choices[0].message.content)
-  print(response)
   return response
