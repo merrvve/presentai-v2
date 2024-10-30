@@ -1,5 +1,5 @@
 # PRESENTAI
-presentai.net Web application.
+presentai-app.web.app Web application.
 
 ## Features:
 - Extract text and images from pdf
